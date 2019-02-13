@@ -53,6 +53,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <version>1.5.9.RELEASE</version>
+            <optional>true</optional>
         </dependency>
 
         <!-- slf4j覆盖jcl日志 -->
@@ -105,6 +106,9 @@
     <build>
         <finalName>spring-boot-introduction</finalName>
         <plugins>
+            <!--
+                将项目打成jar包的插件
+             -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

@@ -1,4 +1,4 @@
-package com.footprint.zh.web;
+package com.footprint.boot.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
