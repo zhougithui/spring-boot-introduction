@@ -1,8 +1,10 @@
 package com.footprint.boot;
 
+import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -18,4 +20,14 @@ public class Application extends SpringBootServletInitializer {
         ///System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(Application.class, args);
     }
+
+    /*@Bean
+    public ExitCodeGenerator exitCodeGenerator() {
+        return () -> 42;
+    }
+
+    public static void main(String[] args) {
+        System.exit(SpringApplication
+                .exit(SpringApplication.run(Application.class, args)));
+    }*/
 }
