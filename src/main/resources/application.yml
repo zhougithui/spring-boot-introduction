@@ -12,6 +12,14 @@ spring:
     profiles: development
 server:
     address: 127.0.0.1
+
+acme:
+    remote-address: 192.168.1.1
+    security:
+        username: admin
+        roles:
+          - USER
+          - ADMIN
 ---
 spring:
     profiles: production & eu-central

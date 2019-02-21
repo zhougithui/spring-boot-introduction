@@ -1,4 +1,4 @@
-package com.footprint.boot;
+package com.footprint.boot.yaml;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
