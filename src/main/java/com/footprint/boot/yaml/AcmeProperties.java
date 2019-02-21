@@ -1,9 +1,7 @@
 package com.footprint.boot.yaml;
 
 import java.net.InetAddress;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -75,6 +73,42 @@ public class AcmeProperties {
 
         public void setRoles(List<String> roles) {
             this.roles = roles;
+        }
+    }
+
+    private List<MyPojo> list = new ArrayList<>();
+
+    public void setList(List<MyPojo> list){
+        this.list = list;
+    }
+    public List<MyPojo> getList() {
+        return this.list;
+    }
+
+    private final Map<String, MyPojo> map = new HashMap<>();
+
+    public Map<String, MyPojo> getMap() {
+        return this.map;
+    }
+
+    public static class MyPojo{
+        private String name;
+        private String description;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
         }
     }
 }
