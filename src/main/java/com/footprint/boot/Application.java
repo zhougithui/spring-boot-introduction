@@ -1,11 +1,14 @@
 package com.footprint.boot;
 
-import org.springframework.boot.ExitCodeGenerator;
+import com.footprint.boot.web.IndexController;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Profile;
 
 /**
  * SpringBootServletInitializer
@@ -30,4 +33,15 @@ public class Application extends SpringBootServletInitializer {
         System.exit(SpringApplication
                 .exit(SpringApplication.run(Application.class, args)));
     }*/
+    @Value("${my.secret}")
+    private String name;
+
+    @Value("${server.address}")
+    private String serverAddress;
+
+    @Bean
+    public IndexController indexController(YamlBean yamlBean){
+        return new IndexController();
+    }
+
 }

@@ -8,6 +8,9 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 
+/**
+ * 监听spring容器的各种事件
+ */
 public class MyListener implements ApplicationListener<ApplicationEvent>, ApplicationContextAware {
     private static final Logger logger = LoggerFactory.getLogger(MyListener.class);
 
