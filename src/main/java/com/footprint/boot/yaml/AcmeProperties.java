@@ -6,6 +6,10 @@ import java.util.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 /**
  * @Configuration
@@ -15,12 +19,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties(AcmeProperties.class)
 @ConfigurationProperties("acme")
+@Validated
 public class AcmeProperties {
 
     private boolean enabled;
 
     private InetAddress remoteAddress;
 
+    //@Valid
     private final Security security = new Security();
 
     public boolean isEnabled() {
@@ -47,6 +53,7 @@ public class AcmeProperties {
 
         private String username;
 
+        @NotNull
         private String password;
 
         private List<String> roles = new ArrayList<>(Collections.singleton("USER"));
@@ -93,6 +100,7 @@ public class AcmeProperties {
 
     public static class MyPojo{
         private String name;
+        @NotNull
         private String description;
 
         public String getName() {
