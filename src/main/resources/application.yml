@@ -1,3 +1,5 @@
+spring:
+  profiles: default
 my:
    servers:
        - dev.example.com
