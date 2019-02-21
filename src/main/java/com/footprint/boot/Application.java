@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
@@ -45,7 +46,18 @@ public class Application extends SpringBootServletInitializer {
 
     @Bean
     public IndexController indexController(YamlBean yamlBean){
+        AcmeProperties acme = anotherComponent();
         return new IndexController();
+    }
+
+    /**
+     * acme开头的属性都会被注入新的对象中
+     * @return
+     */
+    @ConfigurationProperties(prefix = "acme")
+    @Bean
+    public AcmeProperties anotherComponent() {
+        return new AcmeProperties();
     }
 
 }
