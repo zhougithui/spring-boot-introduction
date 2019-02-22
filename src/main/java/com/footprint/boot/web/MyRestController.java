@@ -35,9 +35,10 @@ public class MyRestController {
         return customers;
     }
 
-    @RequestMapping(value="/{user}", method=RequestMethod.DELETE)
+    @RequestMapping(value="/del/{user}", method=RequestMethod.GET)
     public User deleteUser(@PathVariable Long user) {
         logger.info("删除用户信息");
+        if(user != null) throw new NullPointerException("空指针异常");
         return new User();
     }
 
