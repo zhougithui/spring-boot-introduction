@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--生产环境  -->
+    <springProfile name="prd">
+        <!-- 将日志记录到文件中 -->
+        <appender name="LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>/work/logs/datacenter.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>/work/logs/datacenter.%d{yyyy-MM-dd}.log</FileNamePattern>
+            </rollingPolicy>
+            <encoder>
+                <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+            </encoder>
+        </appender>
+
+        <!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
+        <logger name="org.hibernate" level="WARN" />
+        <logger name="org.springframework" level="INFO" />
+        <logger name="org.thymeleaf" level="WARN" />
+        <logger name="org.apache" level="WARN" />
+        <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder"  level="TRACE" />
+        <logger name="org.hibernate.type.descriptor.sql.BasicExtractor"  level="DEBUG" />
+        <logger name="org.hibernate.SQL" level="DEBUG" />
+        <logger name="org.hibernate.engine.QueryParameters" level="DEBUG" />
+        <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" />
+    </springProfile>
+
+    <!--测试环境  -->
+    <springProfile name="test">
+        <appender name="LOG" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+            </encoder>
+        </appender>
+        <!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
+        <logger name="org.hibernate" level="INFO" />
+        <logger name="org.springframework" level="INFO" />
+        <logger name="org.thymeleaf" level="INFO" />
+        <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder"  level="TRACE" />
+        <logger name="org.hibernate.type.descriptor.sql.BasicExtractor"  level="DEBUG" />
+        <logger name="org.hibernate.SQL" level="DEBUG" />
+        <logger name="org.hibernate.engine.QueryParameters" level="DEBUG" />
+        <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" />
+    </springProfile>
+
+    <!--开发环境  -->
+    <springProfile name="development">
+        <!-- 将日志打印到控制台 -->
+        <appender name="LOG" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+            </encoder>
+        </appender>
+        <!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
+        <logger name="org.hibernate" level="INFO" />
+        <logger name="org.springframework" level="INFO" />
+        <logger name="org.thymeleaf" level="INFO" />
+        <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder"  level="TRACE" />
+        <logger name="org.hibernate.type.descriptor.sql.BasicExtractor"  level="DEBUG" />
+        <logger name="org.hibernate.SQL" level="DEBUG" />
+        <logger name="org.hibernate.engine.QueryParameters" level="DEBUG" />
+        <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" />
+    </springProfile>
+
+    <root level="INFO">
+        <appender-ref ref="LOG"/>
+    </root>
+</configuration>

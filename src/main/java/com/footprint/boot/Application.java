@@ -3,6 +3,8 @@ package com.footprint.boot;
 import com.footprint.boot.web.IndexController;
 import com.footprint.boot.yaml.AcmeProperties;
 import com.footprint.boot.yaml.YamlBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +21,7 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @ImportResource({"classpath:spring-application.xml"})
 public class Application extends SpringBootServletInitializer {
+    private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) throws Exception {
         //禁用热启动
@@ -47,6 +50,9 @@ public class Application extends SpringBootServletInitializer {
     @Bean
     public IndexController indexController(YamlBean yamlBean){
         AcmeProperties acme = anotherComponent();
+        logger.info("info log");
+        logger.error("error log");
+        logger.debug("debug log");
         return new IndexController();
     }
 
