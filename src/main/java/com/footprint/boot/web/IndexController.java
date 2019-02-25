@@ -1,18 +1,18 @@
 package com.footprint.boot.web;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 public class IndexController {
 
     @RequestMapping("/index")
     public String home() {
-        return "Hello World!";
+        return "home";
     }
 
     @RequestMapping(value = "/home")
