@@ -13,7 +13,8 @@ public class MyHandlerExceptionResolver implements HandlerExceptionResolver {
 
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-        ex.printStackTrace();
-        return new ModelAndView("redirect:/index.html");
+        ModelAndView modelAndView = new ModelAndView("redirect:/index");
+        return modelAndView;
     }
+
 }

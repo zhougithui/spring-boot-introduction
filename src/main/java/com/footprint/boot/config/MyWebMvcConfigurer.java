@@ -8,6 +8,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -59,6 +60,14 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
                 .addResolver(fixVersionResourceResolver);
     }
 
+    /**
+     * 支持跨域访问
+     * @param registry
+     */
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**");
+    }
 
     public static void main(String[] args){
         Resource resource = new ClassPathResource("/static/javasrc.js");
