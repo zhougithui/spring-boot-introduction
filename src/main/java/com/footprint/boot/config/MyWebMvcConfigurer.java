@@ -41,9 +41,22 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
                 .addVersionStrategy(new ContentVersionStrategy(), "/**");
         registry.addResourceHandler("/js/*.js")
                 .addResourceLocations("/static/","classpath:/static/")
-                .setCachePeriod(60 * 60 * 24 * 365) /* one year */
+                .setCachePeriod(60 * 60 * 24 * 365)
                 .resourceChain(true)
                 .addResolver(versionResourceResolver);
+
+        /**
+         * 通过指定的版本号访问静态文件
+         * http://localhost:8081/spring-boot/2.0.0/v/classpath.js
+         * http://localhost:8081/spring-boot/2.0.0/v/webapp.js
+         */
+        VersionResourceResolver fixVersionResourceResolver = new VersionResourceResolver()
+                .addFixedVersionStrategy("2.0.0", "/**");
+        registry.addResourceHandler("/2.0.0/v/*.js")
+                .addResourceLocations("/static/","classpath:/static/")
+                .setCachePeriod(60 * 60 * 24 * 365) /* one year */
+                .resourceChain(true)
+                .addResolver(fixVersionResourceResolver);
     }
 
 
