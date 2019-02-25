@@ -12,5 +12,6 @@
 </head>
 <body>
 welcome to my ...
+${ERROR_INFO.code} ${ERROR_INFO.message}
 </body>
 </html>
