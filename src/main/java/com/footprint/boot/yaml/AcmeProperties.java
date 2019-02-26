@@ -19,7 +19,6 @@ import javax.validation.constraints.NotNull;
 @Configuration
 @EnableConfigurationProperties(AcmeProperties.class)
 @ConfigurationProperties("acme")
-@Validated
 public class AcmeProperties {
 
     private boolean enabled;

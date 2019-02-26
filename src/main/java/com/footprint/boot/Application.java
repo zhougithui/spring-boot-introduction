@@ -1,8 +1,6 @@
 package com.footprint.boot;
 
-import com.footprint.boot.web.IndexController;
 import com.footprint.boot.yaml.AcmeProperties;
-import com.footprint.boot.yaml.YamlBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.reactive.config.EnableWebFlux;
@@ -40,32 +38,5 @@ public class Application extends SpringBootServletInitializer {
         System.exit(SpringApplication
                 .exit(SpringApplication.run(Application.class, args)));
     }*/
-    @Value("${my.secret}")
-    private String name;
-
-    @Value("${server.address}")
-    private String serverAddress;
-
-    @Autowired
-    private AcmeProperties acmeProperties;
-
-    @Bean
-    public IndexController indexController(YamlBean yamlBean){
-        AcmeProperties acme = anotherComponent();
-        logger.info("info log");
-        logger.error("error log");
-        logger.debug("debug log");
-        return new IndexController();
-    }
-
-    /**
-     * acme开头的属性都会被注入新的对象中
-     * @return
-     */
-    @ConfigurationProperties(prefix = "acme")
-    @Bean
-    public AcmeProperties anotherComponent() {
-        return new AcmeProperties();
-    }
 
 }
