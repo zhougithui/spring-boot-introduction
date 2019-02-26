@@ -13,6 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.web.reactive.config.EnableWebFlux;
 
 /**
  * SpringBootServletInitializer
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.ImportResource;
  */
 @SpringBootApplication
 @ImportResource({"classpath:spring-application.xml"})
+@EnableWebFlux
 public class Application extends SpringBootServletInitializer {
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
 

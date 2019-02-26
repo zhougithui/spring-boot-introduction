@@ -1,8 +1,11 @@
 package com.footprint.boot.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,4 +30,11 @@ public class IndexController {
         modelAndView.addObject("userList", userList);
         return modelAndView;
     }
+
+    @GetMapping("/hello")
+    @ResponseBody
+    public Mono<String> hello() {
+        return Mono.just("Welcome to reactive world ~");
+    }
+
 }
